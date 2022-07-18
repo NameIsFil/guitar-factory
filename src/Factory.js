@@ -4,16 +4,15 @@ import { Body, Strings, Neck } from "./Parts";
 import { Storage } from "./Storage";
 
 class Factory {
-    storage = new Storage();
     neckSupplyCount = 0;
     stringsSupplyCount = 0;
-    bodyPart = null;
-    count = 0;
+    produceBody = null;
+    storage = new Storage();
+
 
     constructor() {
-        this.bodyPart = new Body();
+        this.produceBody = new Body();
         setInterval(this.runProductionLine, 2000);
-        // this.runProductionLine();
     }
 
     runProductionLine() {
@@ -28,11 +27,11 @@ class Factory {
         } else {
             this.neckSupplyCount += newNeckDelivery.supplyCount;
             this.stringsSupplyCount += newStringsDelivery.supplyCount;
-            this.count += 1;
+            console.log('Guitar has been produced')
             const newGuitar = new Guitar(
                 this.neckSupplyCount,
                 this.stringsSupplyCount,
-                this.bodyPart,
+                this.produceBody,
             );
             console.log(newGuitar);
         }
