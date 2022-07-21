@@ -8,11 +8,18 @@ class Factory {
     stringsSupplyCount = 0;
     produceBody = null;
     storage = new Storage();
-
+    instrument = 'guitar';
 
     constructor() {
         this.produceBody = new Body();
         setInterval(this.runProductionLine, 2000);
+        setInterval(this.addInstrument, 2000);
+
+    }
+
+    addInstrument() {
+        this.storage.instrumentsArray.push(this.instrument);
+        console.log(this.storage.instrumentsArray.length);
     }
 
     runProductionLine() {
