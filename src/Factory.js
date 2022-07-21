@@ -12,14 +12,7 @@ class Factory {
 
     constructor() {
         this.produceBody = new Body();
-        setInterval(this.runProductionLine, 2000);
-        setInterval(this.addInstrument, 2000);
-
-    }
-
-    addInstrument() {
-        this.storage.instrumentsArray.push(this.instrument);
-        console.log(this.storage.instrumentsArray.length);
+        setInterval(this.runProductionLine.bind(this), 2000);
     }
 
     runProductionLine() {
@@ -41,6 +34,8 @@ class Factory {
                 this.produceBody,
             );
             console.log(newGuitar);
+            this.storage.instrumentsArray.push(this.instrument);
+            this.storage.storeInstrument();
         }
     }
 
