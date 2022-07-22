@@ -1,3 +1,3 @@
-import { Factory } from "./Factory";
+import { Factory } from './Factory';
 
 const newFactory = new Factory();

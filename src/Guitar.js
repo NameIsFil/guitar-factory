@@ -1,5 +1,5 @@
-import { Factory } from "./Factory";
-import { Storage } from "./Storage";
+import { Factory } from './Factory';
+import { Storage } from './Storage';
 
 class Guitar {
   constructor(neckSupplyCount, stringsSupplyCount, produceBody) {
@@ -12,7 +12,6 @@ class Guitar {
   guitarCheck() {
     this.tune();
     this.isFaulty = this.error();
-    this.isPlayable();
   }
 
   error() {
@@ -36,12 +35,3 @@ class Guitar {
 }
 
 export { Guitar };
-
-
-
-
-
-
-
-
-

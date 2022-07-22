@@ -1,14 +1,14 @@
 class Storage {
-    instrumentsArray = [];
+  instrumentsArray = [];
 
-    constructor() {
-        this.instrumentsArray = [];
-        this.storeInstrument();
-    }
+  constructor() {
+    this.instrumentsArray = [];
+    this.storeInstrument();
+  }
 
-    storeInstrument() {
-        console.log('There is ' + this.instrumentsArray.length + ' in Storage');
-    }
+  storeInstrument() {
+    console.log('There is ' + this.instrumentsArray.length + ' in Storage');
+  }
 }
 
 export { Storage };
