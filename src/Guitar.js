@@ -1,11 +1,18 @@
 import { Factory } from './Factory';
 import { Storage } from './Storage';
+import { Neck } from './Parts';
 
 class Guitar {
-  constructor(neckSupplyCount, stringsSupplyCount, produceBody) {
+  constructor(neck, body, strings) {
+    this.neck = neck;
+    this.body = body;
+    this.strings = strings;
     this.guitarCheck();
   }
 
+  neck;
+  body;
+  strings;
   isFaulty = undefined;
   isTuned = false;
 
@@ -24,7 +31,13 @@ class Guitar {
   }
 
   isPlayable() {
-    if (this.isTuned === true && this.isFaulty === false) {
+    if (
+      this.neck &&
+      this.body &&
+      this.strings &&
+      this.isTuned &&
+      !this.isFaulty
+    ) {
       console.log('Guitar is playing just fine!');
       return true;
     } else {

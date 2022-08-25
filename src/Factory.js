@@ -6,12 +6,11 @@ import { Storage } from './Storage';
 class Factory {
   neckSupplyCount = 0;
   stringsSupplyCount = 0;
-  produceBody = null;
+  // produceBody = new Body();
   storage = new Storage();
   instrument = 'guitar';
 
   constructor() {
-    this.produceBody = new Body();
     setInterval(this.runProductionLine.bind(this), 2000);
   }
 
@@ -29,14 +28,13 @@ class Factory {
       this.stringsSupplyCount += newStringsDelivery.supplyCount;
       console.log('Guitar has been produced');
       const newGuitar = new Guitar(
-        this.neckSupplyCount,
-        this.stringsSupplyCount,
-        this.produceBody,
+        (this.neck = new Neck()),
+        (this.body = new Body()),
+        (this.strings = new Strings()),
       );
       console.log(newGuitar);
       if (newGuitar.isPlayable() === true) {
-        this.storage.instrumentsArray.push(this.instrument);
-        this.storage.storeInstrument();
+        this.storage.storeInstrument(this.instrument);
       }
     }
   }
