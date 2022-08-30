@@ -14,8 +14,10 @@ class Supplier {
       this.supplyCount = null;
       return this.supplyCount;
     } else {
+      const min = 3;
+      const max = 6;
       this.lastSupplyTimestamp = Date.now();
-      this.supplyCount = Math.floor(Math.random() * (7 - 3) + 3);
+      this.supplyCount = Math.round(Math.random() * (max - min) + min);
       return this.supplyCount;
     }
   }

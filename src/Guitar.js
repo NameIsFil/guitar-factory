@@ -18,12 +18,7 @@ class Guitar {
 
   guitarCheck() {
     this.tune();
-    this.isFaulty = this.error();
-  }
-
-  error() {
-    let x = Math.random();
-    return x > 0.7;
+    this.isFaulty = Math.random() > 0.7;
   }
 
   tune() {

@@ -33,7 +33,7 @@ class Factory {
         (this.strings = new Strings()),
       );
       console.log(newGuitar);
-      if (newGuitar.isPlayable() === true) {
+      if (newGuitar.isPlayable()) {
         this.storage.storeInstrument(this.instrument);
       }
     }
