@@ -1,8 +1,7 @@
 class NeckSupplier {
   lastSupplyTimestamp = null;
   frequencyInSeconds;
-  supplyCount = null;
-
+  necksDeliveryArray;
 
   constructor(frequencyInSeconds) {
     this.frequencyInSeconds = frequencyInSeconds;
@@ -12,19 +11,19 @@ class NeckSupplier {
   neckDelivery() {
     const neckTimeDifference = Date.now() - this.lastSupplyTimestamp;
     if (neckTimeDifference < this.frequencyInSeconds * 1000) {
-      this.supplyCount = null;
-      return this.supplyCount;
+      this.necksDeliveryArray = null;
+      return this.necksDeliveryArray;
     } else {
       const min = 3;
       const max = 6;
-      const arrayOfSupplies = [];
+      this.necksDeliveryArray = [];
       this.lastSupplyTimestamp = Date.now();
       const randomNumber = Math.round(Math.random() * (max - min) + min);
       for (let i = 0; i < randomNumber; i++) {
-        arrayOfSupplies.push('part');
+        this.necksDeliveryArray.push('part');
       }
-      this.supplyCount = arrayOfSupplies.length;
-      return this.supplyCount;
+      console.log('delivered ' + this.necksDeliveryArray.length + ' of neck parts');
+      return this.necksDeliveryArray;
     }
   }
 }
@@ -32,7 +31,7 @@ class NeckSupplier {
 class StringsSupplier {
   lastSupplyTimestamp = null;
   frequencyInSeconds;
-  supplyCount = null;
+  stringsDeliveryArray;
 
   constructor(frequencyInSeconds) {
     this.frequencyInSeconds = frequencyInSeconds;
@@ -42,15 +41,19 @@ class StringsSupplier {
   stringsDelivery() {
     const stringsTimeDifference = Date.now() - this.lastSupplyTimestamp;
     if (stringsTimeDifference < this.frequencyInSeconds * 1000) {
-      this.supplyCount = null;
-      return this.supplyCount;
+      this.stringsDeliveryArray = null;
+      return this.stringsDeliveryArray;
     } else {
-      const array = [];
       const min = 3;
       const max = 6;
+      this.stringsDeliveryArray = [];
       this.lastSupplyTimestamp = Date.now();
-      this.supplyCount = Math.round(Math.random() * (max - min) + min);
-      return this.supplyCount;
+      const randomNumber = Math.round(Math.random() * (max - min) + min);
+      for (let i = 0; i < randomNumber; i++) {
+        this.stringsDeliveryArray.push('part');
+      }
+      console.log('delivered ' + this.stringsDeliveryArray.length + ' of strings parts');
+      return this.stringsDeliveryArray;
     }
   }
 }
