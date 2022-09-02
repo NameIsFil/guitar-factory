@@ -28,17 +28,19 @@ class Factory {
       setTimeout(this.continueExecution, 4000);
     } else {
       for (let i = 0; i < newNeckDelivery.necksDeliveryArray.length; i++) {
-        this.necksArray.push(i);
+        this.necksArray.push(new Neck());
       }
       for (let j = 0; j < newStringsDelivery.stringsDeliveryArray.length; j++) {
-        this.stringsArray.push(j);
+        this.stringsArray.push(new Strings());
       }
+      this.necksArray.pop();
+      this.stringsArray.pop();
       console.log(this.necksArray.length, this.stringsArray.length);
       console.log('Guitar has been produced');
       const newGuitar = new Guitar(
           (this.body = this.produceBody()),
-          (this.neck = new Neck()),
-          (this.strings = new Strings()),
+          (this.neck = this.necksArray.pop()),
+          (this.strings = this.stringsArray.pop()),
       );
       console.log(newGuitar);
       if (newGuitar.isPlayable()) {
