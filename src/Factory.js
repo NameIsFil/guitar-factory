@@ -10,6 +10,8 @@ class Factory {
   necksArray = [];
 
   constructor() {
+    this.neckSupplier = new NeckSupplier(3);
+    this.stringsSupplier = new StringsSupplier(4);
     setInterval(this.runProductionLine.bind(this), 2000);
   }
 
@@ -18,23 +20,27 @@ class Factory {
   }
 
   runProductionLine() {
-    const newNeckDelivery = new NeckSupplier(3);
-    const newStringsDelivery = new StringsSupplier(4);
+    const necks = this.neckSupplier.delivery();
+    const strings = this.stringsSupplier.delivery();
+
+    if (necks !== null) {
+      necks.forEach((neckPart) => {
+        this.necksArray.push(neckPart);
+      })
+    }
+
+    if (strings !== null) {
+      strings.forEach((stringsPart) => {
+        this.stringsArray.push(stringsPart);
+      })
+    }
 
     if (
-      newNeckDelivery.necksDeliveryArray === null ||
-      newStringsDelivery.stringsDeliveryArray === null
+        this.necksArray.length === 0 ||
+        this.stringsArray.length === 0
     ) {
       setTimeout(this.continueExecution, 4000);
     } else {
-      for (let i = 0; i < newNeckDelivery.necksDeliveryArray.length; i++) {
-        this.necksArray.push(new Neck());
-      }
-      for (let j = 0; j < newStringsDelivery.stringsDeliveryArray.length; j++) {
-        this.stringsArray.push(new Strings());
-      }
-      this.necksArray.pop();
-      this.stringsArray.pop();
       console.log(this.necksArray.length, this.stringsArray.length);
       console.log('Guitar has been produced');
       const newGuitar = new Guitar(

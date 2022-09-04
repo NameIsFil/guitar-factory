@@ -1,29 +1,29 @@
+import {Neck, Strings} from "./Parts";
+
 class NeckSupplier {
   lastSupplyTimestamp = null;
   frequencyInSeconds;
-  necksDeliveryArray;
 
   constructor(frequencyInSeconds) {
     this.frequencyInSeconds = frequencyInSeconds;
-    this.neckDelivery();
+    this.delivery();
   }
 
-  neckDelivery() {
+  delivery() {
     const neckTimeDifference = Date.now() - this.lastSupplyTimestamp;
     if (neckTimeDifference < this.frequencyInSeconds * 1000) {
-      this.necksDeliveryArray = null;
-      return this.necksDeliveryArray;
+      return null;
     } else {
       const min = 3;
       const max = 6;
-      this.necksDeliveryArray = [];
+      const necksDeliveryArray = [];
       this.lastSupplyTimestamp = Date.now();
       const randomNumber = Math.round(Math.random() * (max - min) + min);
       for (let i = 0; i < randomNumber; i++) {
-        this.necksDeliveryArray.push('part');
+        necksDeliveryArray.push(new Neck());
       }
-      console.log('delivered ' + this.necksDeliveryArray.length + ' of neck parts');
-      return this.necksDeliveryArray;
+      console.log('delivered ' + necksDeliveryArray.length + ' of neck parts');
+      return necksDeliveryArray;
     }
   }
 }
@@ -31,31 +31,33 @@ class NeckSupplier {
 class StringsSupplier {
   lastSupplyTimestamp = null;
   frequencyInSeconds;
-  stringsDeliveryArray;
 
   constructor(frequencyInSeconds) {
     this.frequencyInSeconds = frequencyInSeconds;
-    this.stringsDelivery();
+    this.delivery();
   }
 
-  stringsDelivery() {
+  delivery() {
     const stringsTimeDifference = Date.now() - this.lastSupplyTimestamp;
     if (stringsTimeDifference < this.frequencyInSeconds * 1000) {
-      this.stringsDeliveryArray = null;
-      return this.stringsDeliveryArray;
+      return null;
     } else {
       const min = 3;
       const max = 6;
-      this.stringsDeliveryArray = [];
+      const stringsDeliveryArray = [];
       this.lastSupplyTimestamp = Date.now();
       const randomNumber = Math.round(Math.random() * (max - min) + min);
       for (let i = 0; i < randomNumber; i++) {
-        this.stringsDeliveryArray.push('part');
+        stringsDeliveryArray.push(new Strings());
       }
-      console.log('delivered ' + this.stringsDeliveryArray.length + ' of strings parts');
-      return this.stringsDeliveryArray;
+      console.log('delivered ' + stringsDeliveryArray.length + ' of neck parts');
+      return stringsDeliveryArray;
     }
   }
 }
 
 export { StringsSupplier, NeckSupplier };
+
+
+
+
