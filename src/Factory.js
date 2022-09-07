@@ -39,24 +39,20 @@ class Factory {
         this.necksArray.length === 0 ||
         this.stringsArray.length === 0
     ) {
-      setTimeout(this.continueExecution, 4000);
+      setTimeout(() => {}, 4000);
     } else {
-      console.log(this.necksArray.length, this.stringsArray.length);
-      console.log('Guitar has been produced');
-      const newGuitar = new Guitar(
-          (this.body = this.produceBody()),
-          (this.neck = this.necksArray.pop()),
-          (this.strings = this.stringsArray.pop()),
-      );
-      console.log(newGuitar);
-      if (newGuitar.isPlayable()) {
-        this.storage.storeInstrument(this.instrument);
-      }
+        console.log(this.necksArray.length, this.stringsArray.length);
+        console.log('Guitar has been produced');
+        const newGuitar = new Guitar(
+            (this.body = this.produceBody()),
+            (this.neck = this.necksArray.pop()),
+            (this.strings = this.stringsArray.pop()),
+        );
+        console.log(newGuitar);
+        if (newGuitar.isPlayable()) {
+          this.storage.storeInstrument(this.instrument);
+        }
     }
-  }
-
-  continueExecution() {
-    this.runProductionLine();
   }
 }
 
