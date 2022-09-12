@@ -50,7 +50,7 @@ class StringsSupplier {
       for (let i = 0; i < randomNumber; i++) {
         stringsDeliveryArray.push(new Strings());
       }
-      console.log('delivered ' + stringsDeliveryArray.length + ' of neck parts');
+      console.log('delivered ' + stringsDeliveryArray.length + ' of strings parts');
       return stringsDeliveryArray;
     }
   }

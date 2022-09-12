@@ -39,7 +39,8 @@ class Factory {
         this.necksArray.length === 0 ||
         this.stringsArray.length === 0
     ) {
-      setTimeout(() => {}, 4000);
+      console.log('Rerunning production line...');
+      setTimeout(this.runProductionLine.bind(this), 4000);
     } else {
         console.log(this.necksArray.length, this.stringsArray.length);
         console.log('Guitar has been produced');
